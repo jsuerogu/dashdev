@@ -1,0 +1,66 @@
+﻿@using Newtonsoft.Json
+@model TopModel
+
+<div id="accordion-@Model.Id" class="col-md-6 col-12 min-wid">
+    <div class="card ">
+        <div class="card-header" id="header-@Model.IdHeader">
+            <button class="btn collapsed" style="width: 100%" onclick="toggleTop(@Model.Id)">
+                <div>@Model.Titulo</div>
+                <div>@Model.SubTitulo</div>
+                <div>@Model.SubTitulo2</div>
+            </button>
+        </div>
+
+        <div id="top-@Model.Id" class="collapse in @Model.Class">
+            <div class="card-body" style="padding: 3px; font-size: 8pt">
+                <div class="table-responsive">
+                    @if (Model.Valores.Any())
+                    {
+                        <table cellspacing="0" cellpadding="5" style="width: 100%;">
+                            <thead class="thead-info">
+                                <tr>
+                                    @foreach (var columna in Model.Columnas)
+                                    {
+                                        if (string.IsNullOrEmpty(columna.Tooltip))
+                                        {
+                                            <th style="@columna.Class">@columna.Titulo</th>
+                                        }
+                                        else
+                                        {
+                                            <th style="@columna.Class" tabindex="0" data-toggle="tooltip" data-placement="top" title="@columna.Tooltip">@columna.Titulo</th>
+                                        }
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody class="tablaTop2">
+                                @foreach (var registro in Model.Valores)
+                                {
+                                    <tr>
+                                        @foreach (var value in registro.ExtraData)
+                                        {
+                                            <td>@value</td>
+                                        }
+                                        @if (!Model.HasLink)
+                                        {
+                                            <td style="text-align:right"><span class="d-inline-block">@registro.ValorMensual.ToStringSeparadorComa(registro.Formato)</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align:right"><a href="#" onclick="resumenTop('@JsonConvert.SerializeObject(registro)', '@Url.Content("~/Consultas/Tops")', 1)">@registro.ValorMensual.ToStringSeparadorComa(registro.Formato)</a></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h6 style="text-align:center;">No hay datos</h6>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

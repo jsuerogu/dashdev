@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DashboardLaboral.Shared": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61414;http://localhost:61415"
+    }
+  }
+}

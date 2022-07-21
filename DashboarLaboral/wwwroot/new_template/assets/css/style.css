@@ -1,0 +1,478 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+/*
+.apexcharts-data-labels .apexcharts-datalabel {
+	color: #004C8B !important;
+	font-size: 28px !important;
+	background-color: #FFF !important;
+	opacity: 1 !important;
+	font-weight: bold !important;
+}
+
+.apexcharts-data-labels {
+	background-color: #FFF !important;
+}*/
+
+a:link {
+	color: #444;
+}
+
+/* visited link */
+a:visited {
+	color: #444;
+}
+
+/* mouse over link */
+a:hover {
+	color: #004C8B;
+}
+
+/* selected link */
+a:active {
+	color: blue;
+}
+
+.mostrar_opcional{
+	display: none ;
+}
+
+table tr.color-corpora th {
+	background-color: #004C3B !important;
+	color: #FFF !important;
+}
+
+.color-btn {
+	background-color: #004C3B !important;
+	color: #FFF !important;
+}
+
+.text-media {
+	font-size: 24px;
+}
+
+.max-hei {
+	height: 130px !important;
+}
+
+.max {
+	height: 78% !important;
+}
+
+
+.linea {
+	border-right: 1px solid #DDD !important;
+}
+
+.margen_top {
+	margin-top: -6em;
+}
+
+.margen_top1 {
+	margin-top: -8em;
+}
+
+.marg-lef1 {
+	margin-right: -1.8em;
+}
+
+.marg-lef {
+	margin-left: -2.8em;
+}
+
+.color-ayer, .color-ayer a {
+	color: #00468B !important;
+}
+
+.color-hoy, .color-hoy a {
+	color: #004C3B !important;
+}
+
+.font-num {
+	font-size: 42px !important;
+}
+
+.font-text {
+	font-size: 14px !important;
+	margin-left: 8px;
+}
+
+.fecha_view {
+	top: 10px;
+	font-size: 1rem;
+	position: absolute;
+	right: 1em;
+}
+
+
+
+.btn-descar {
+	float: right;
+	position: absolute; 
+	top: 1em;
+	right: 2em;
+	text-align: center;
+}
+
+
+.format-camel{
+	text-transform: capitalize;
+}
+
+.position_mostrar{
+	float: right;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.semafo-gris, .semafo-ver, .semafo-roj, .semafo-ama, .semafo-Premise {
+	width: 20px;
+	height: 20px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.semafo-gris{
+	background-color: #808080 !important;
+}
+.semafo-ver {
+	background-color: #00ff21 !important;
+}
+.semafo-roj {
+	background-color: #ff0000 !important;
+}
+.semafo-ama {
+	background-color: #ffd800 !important;
+}
+
+.semafo-Premise {
+	background-color: #00A6D6 !important;
+}
+
+.apexcharts-legend-series {
+	z-index: 9 !important;
+}
+
+
+.block_page {
+	position: fixed !important;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	z-index: 9999999999 !important;
+}
+
+#center_load {
+	width: 20%;
+	margin: 0 auto;
+	position: relative;
+	top: 30%;
+}
+
+.text-center{
+	text-align: center !important;
+}
+
+.text-middle {
+	position: relative;
+	color: #000;
+	font-size: 22px;
+	font-weight: 500;
+	top: -0.5em;
+}
+
+num-top{
+	font-weight: bold;
+}
+
+.ul_ofOn1{
+	width: 70%;
+	text-align: center !important;
+}
+
+.ul_ofOn {
+	text-align: center !important;
+}
+
+
+
+.ul_ofOn li {
+	display: inline-block;
+	/*margin-left: 2em;
+	border-left: 1px solid #DDD;*/
+	padding: 0 0 0 1em;
+	text-align: center !important;
+	margin: auto;
+}
+
+.ul_ofOn li h1{
+	font-size: 20px;
+}
+
+.ul_ofOn li h1 span img {
+	margin-top: -10px;
+}
+
+.ul_ofOn li a {
+display: inline-block;
+text-align: center !important;
+}
+
+.ul_ofOn li span{
+	margin-left: 0.7em;
+}
+
+.material-icons {
+	color: #AAA;
+}
+
+.right-info {
+	position: absolute !important;
+	right: 5px;
+	top: 5px;
+}
+
+/*
+.bloque_page {
+	position: relative;
+}*/
+
+.view_conten_popover {
+	cursor: pointer;
+	position: relative;
+}
+
+.conten_popover {
+	display: none;
+	width: 180px;
+	background-color: #F9F9F9;
+	color: #444;
+	text-align: left;
+	border-radius: 3px;
+	position: absolute;
+	z-index: 1;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-left: -60px;
+	bottom: 150%;
+	left: 50%;
+	border: solid 1px #ddd;
+	padding: 5px;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+	.conten_popover::after {
+		content: "";
+		position: absolute;
+		border-width: 5px;
+		border-style: solid;
+		margin-left: -5px;
+		top: 100%;
+		left: 25%;
+		border-color: #f9f9f9 transparent transparent transparent;
+	}
+
+
+@media (max-width: 576px) {
+	.max-hei {
+		height: 100% !important;
+		width: 100% !important;
+		justify-content: center;
+	}
+
+	.max {
+		height: 94% !important;
+		width: 100% !important;
+		float: none;
+	}
+
+	.margen_top1 {
+		margin-top: 6em !important;
+	}
+
+	.apexcharts-toolbar{
+		top: -2em !important;
+	}
+
+	.marg-lef1 {
+		margin-right: -0em;
+	}
+
+	.marg-lef {
+		margin-left: -1em;
+	}
+
+	.btn-descar {
+		position: relative;
+		float: none;
+		top: 0px;
+		right: 0em;
+	}
+
+	.carousel-control-prev {
+		left: 1em !important;
+	}
+
+	.carousel-control-next {
+		right: 1em !important;
+	}
+
+}
+
+@media (max-width: 1050px) {
+
+	.max {
+		height: 95% !important;
+		width: 125%;
+		float: right;
+	}
+
+	.max-hei {
+		height: 180px !important;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.btn-descar {
+		border-top: 1px solid #DDD;
+		position: relative;
+		float: none;
+		top: 0px;
+		right: 0em;
+		margin-top: 1em;
+	}
+
+	.max-hei {
+		height: 100% !important;
+	}
+
+	.dataTables_length label, .dataTables_filter label {
+		float: left;
+	}
+}
+
+@media (min-width: 768px) {
+
+	.min-wid {
+		min-width: 225px !important;
+	}
+
+	.max {
+		height: 95% !important;
+	}
+
+	.font-num {
+		font-size: 18px !important;
+	}
+
+	.font-text {
+		font-size: 12px !important;
+	}
+
+	.font-text2 {
+		margin-left: 8px;
+	}
+
+	.card-statistics {
+		min-height: 145px !important;
+	}
+
+
+	.fecha_view {
+		font-size: 24px;
+		top: 1.3em;
+	}
+
+}
+
+@media (max-width: 1189px) {
+
+	.margen_top1 {
+		margin-top: 30px;
+	}
+
+	.margen_top {
+		margin-top: -1em;
+	}
+
+	/*.font-num {
+		font-size: 28px !important;
+	}*/
+
+	.font-text {
+		font-size: 14px !important;
+	}
+
+}
+
+/*
+  @media (min-width: 1189px) {
+	.max{
+		height: 95% !important; 
+	}
+  }*/
+
+@media (min-width: 1052px) {
+	.card-statistics {
+		min-height: 178px !important;
+	}
+
+	.mar-top {
+		margin-top: -6em !important;
+	}
+
+	.max {
+		height: 79% !important;
+	}
+
+	/*.text-media {
+		font-size: 32px;
+	}*/
+}
+
+
+@media (min-width: 1307px) {
+	.max {
+		height: 76% !important; 
+	}
+
+	
+	.mar-top {
+		margin-top: -7.5em !important;
+	}
+
+	.font-text {
+		font-size: 18px !important;
+	}
+
+	/*.font-num {
+		font-size: 32px !important;
+	}*/
+}
+
+@media (min-width: 1450px) {
+	
+	.font-num {
+		font-size: 42px !important;
+	}
+}
+
+@media (max-width: 1400px) {
+
+	.font-num {
+		font-size: 36px !important;
+	}
+}

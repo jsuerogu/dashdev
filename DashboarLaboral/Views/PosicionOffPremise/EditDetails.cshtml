@@ -1,0 +1,47 @@
+﻿@model PosicionOffPremiseHeaderDetailDto
+
+<h3>Editar Posición Off-Premise Empleados</h3>
+
+<form method="post" class="modal-link-submit" data-action="@Url.Content("~/PosicionOffPremise/EditDetails")">
+    @Html.HiddenFor(p => p.Id)
+    @Html.HiddenFor(p => p.Posicion)
+
+    <div class="form-group">
+        <label asp-for="Details">Empleados:</label>
+        <ul class="list-group">
+            @for (var i = 0; i < Model.Details.Count; i++)
+            {
+                <li class="list-group-item">
+                    @Html.HiddenFor(m => m.Details[i].Id)
+                    @Html.HiddenFor(m => m.Details[i].CodigoEmpleado)
+                    @Html.HiddenFor(m => m.Details[i].IdHeader)
+                    @Html.HiddenFor(m => m.Details[i].Nombre)
+                    <span>@Html.CheckBoxFor(m => m.Details[i].Selected,  new { @class = "toggle-field", type="checkbox",  data_toggle="toggle", data_on="Si", data_off="No", data_onstyle="secondary", data_height="40", data_width="100%"})</span>
+                    <span>@Model.Details[i].Nombre</span> 
+                </li>
+            }
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-12 col-sm-12 col-lx-6">
+            <button type="submit" id="guardar" class="btn color-btn btn-block">Guardar</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+<script>
+    $(
+        function () {
+           $(document).ready(function () {
+               $('#preload').hide();
+           };
+
+        });
+</script>
+}

@@ -1,0 +1,208 @@
+﻿@model ConsultaModel
+
+<div class="app-content content margen_top1">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="card card-body">
+                <div class="card-body">
+                    @using (Html.BeginForm(FormMethod.Post, new { id = "formFilter" }))
+                    {
+                        <h6>Filtros</h6>
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.DisplayNameFor(m => m.Filtro.Empresa)
+                                    @Html.DropDownListFor(m => m.Filtro.Empresa, Model.Empresas, new { @class = "custom-select" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.DisplayNameFor(m => m.Filtro.Vicepresidencia)
+                                    @Html.DropDownListFor(m => m.Filtro.Vicepresidencia, Model.Vicepresidencias, new { @class = "custom-select" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.DisplayNameFor(m => m.Filtro.Departamento)
+                                    @Html.DropDownListFor(m => m.Filtro.Departamento, Model.Departamentos, new { @class = "custom-select" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6" id="fechaInicial">
+                                    @Html.DisplayNameFor(m => m.Filtro.FechaInicial)
+                                    @Html.TextBoxFor(m => m.Filtro.FechaInicial, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", autocomplete = "off" })
+                                </div>
+                                <div class="col-md-3 fechaFinal">
+                                    @Html.DisplayNameFor(m => m.Filtro.FechaFinal)
+                                    @Html.TextBoxFor(m => m.Filtro.FechaFinal, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", autocomplete = "off" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                        <div class"mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    @Html.DisplayNameFor(m => m.Filtro.RangoFecha)
+                                    <br />
+                                    @Html.CheckBoxFor(m => m.Filtro.RangoFecha,  new { @class = "toggle-field", type="checkbox",  data_toggle="toggle", data_on="Si", data_off="No", data_onstyle="secondary", data_height="40", data_width="100%"})
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.DisplayNameFor(m => m.Filtro.RangoHora)
+                                    <br />
+                                    @Html.CheckBoxFor(m => m.Filtro.RangoHora,  new { @class = "toggle-field", type="checkbox",  data_toggle="toggle", data_on="Hora Actual", data_off="Hora Acumulado", data_onstyle="secondary", data_height="40", data_width="100%"})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.DisplayNameFor(m => m.Filtro.Colaborador)
+                                    @Html.DropDownListFor(m => m.Filtro.Colaborador, Model.ColaboradorTipo, new { @class = "custom-select" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+
+                        <div class="mostrar_filtro">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.DisplayNameFor(m => m.Filtro.Indicador)
+                                    @Html.DropDownListFor(m => m.Filtro.Indicador, Model.Indicadores, new { @class = "custom-select" })
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6 col-12 col-sm-12 col-lx-6">
+                                <button type="submit" id="buscar_rpt" class="btn color-btn btn-block">Buscar</button>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="btn-descar">
+                        <div class="col-md-12 col-12">
+                            <form method="post" action="~/Consultas/ExportPdf" class="export-form">
+                                @Html.HiddenFor(m => m.Filtro.Departamento)
+                                @Html.HiddenFor(m => m.Filtro.Empresa)
+                                @Html.HiddenFor(m => m.Filtro.FechaFinal)
+                                @Html.HiddenFor(m => m.Filtro.FechaInicial)
+                                @Html.HiddenFor(m => m.Filtro.Indicador)
+                                @Html.HiddenFor(m => m.Filtro.Vicepresidencia)
+                                @Html.HiddenFor(m => m.Filtro.RangoFecha)
+                                @Html.HiddenFor(m => m.Filtro.RangoHora)
+                                @Html.HiddenFor(m => m.Filtro.Colaborador)
+                                <button type="submit" class="btn color-btn btn-block" style=" white-space: nowrap;">Descargar PDF</button>
+                            </form>
+                        </div>
+                        <br />
+                        <div class="col-md-12 col-12">
+                            <form method="post" action="~/Consultas/ExportExcel" class="export-form">
+                                @Html.HiddenFor(m => m.Filtro.Departamento)
+                                @Html.HiddenFor(m => m.Filtro.Empresa)
+                                @Html.HiddenFor(m => m.Filtro.FechaFinal)
+                                @Html.HiddenFor(m => m.Filtro.FechaInicial)
+                                @Html.HiddenFor(m => m.Filtro.Indicador)
+                                @Html.HiddenFor(m => m.Filtro.Vicepresidencia)
+                                @Html.HiddenFor(m => m.Filtro.RangoFecha)
+                                @Html.HiddenFor(m => m.Filtro.RangoHora)
+                                @Html.HiddenFor(m => m.Filtro.Colaborador)
+                                <button type="submit" class="btn color-btn btn-block" style=" white-space: nowrap;">Descargar Excel</button>
+                            </form>
+                        </div>
+                        <br />
+                        <div class="col-md-12 col-12">
+                            <button class="btn color-btn btn-block" style=" white-space: nowrap;" onclick="exportMail('@Url.Content("~/Consultas/ExportMail")');">Enviar correo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.Data != null && Model.Data.Departamentos.Any())
+        {
+
+            <h4 class="card-title">Departamentos (@Model.Data.Departamentos.Count)</h4>
+            @foreach (var departamento in Model.Data.Departamentos)
+            {
+                @await Html.PartialAsync("_ResultadoTabla", departamento)
+            }
+            <br />
+        }
+        else if (Model.Data != null)
+        {
+            <div class="alert alert-danger">Sin resultados</div>
+            <br />
+        }
+    </div>
+</div>
+
+<!-- END: Content-->
+@section Scripts {
+<script>
+     $(function () {
+
+        $(document).ready(function () {
+            verificarHorario($('#Filtro_RangoHora').is(':checked'));
+            verificarRangoFecha($("#Filtro_RangoFecha").is(':checked'));
+
+            $('#preload').hide();
+        });
+
+
+         function verificarRangoFecha(isChecked) {
+             if(isChecked)
+             {
+                 $('#fechaInicial').removeClass("col-md-6");
+                 $('#fechaInicial').addClass("col-md-3");
+                 $('.fechaFinal').show()
+             }
+             else
+             {
+                 $('#fechaInicial').removeClass("col-md-3");
+                 $('#fechaInicial').addClass("col-md-6");
+                 $('.fechaFinal').hide()
+             }
+         };
+
+         function verificarHorario(isChecked) {
+                 $('#Filtro_FechaInicial').prop("readonly", isChecked);
+                 $('#Filtro_FechaFinal').prop("readonly", isChecked);
+                 $('#Filtro_RangoFecha').prop("disabled", isChecked);
+         };
+
+        $('#Filtro_RangoFecha').change(function ()
+        {
+            verificarRangoFecha($("#Filtro_RangoFecha").is(':checked'));
+        });
+
+        $('#Filtro_RangoHora').change(function ()
+        {
+            verificarHorario($('#Filtro_RangoHora').is(':checked'));
+        });
+
+        window.onload = function LoadFunction() {
+            verificarRangoFecha($("#Filtro_RangoFecha").is(':checked'));
+             $('#preload').hide();
+         };
+
+        $("#Filtro_Empresa").change(function () {
+            cargarVicePresidencias('#Filtro_Vicepresidencia', $("#Filtro_Empresa").val(), '@Url.Content("~/Home/ObtenerVicePresidencia")');
+        });
+
+        $("#Filtro_Vicepresidencia").change(function () {
+            cargarDepartamentos('#Filtro_Departamento', $("#Filtro_Empresa").val(), $("#Filtro_Vicepresidencia").val(), '@Url.Content("~/Home/ObtenerDepartamentos")');
+        });
+
+    });
+</script>
+}

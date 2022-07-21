@@ -1,0 +1,59 @@
+﻿@model DepartamentoModel
+
+<div class="card card-table">
+    <div class="card-header" id="heading-@Model.Id">
+        <h5 class="mb-0">
+            <button class="btn btn-collapse" data-toggle="collapse" data-url="@Url.Content("~/Consultas/CargarData")" data-target="#collapse-@Model.Id" aria-expanded="true" aria-controls="collapse-@Model.Id">
+                @Model.Titulo <b>(@Model.Total)</b>
+            </button>
+        </h5>
+    </div>
+    <div id="collapse-@Model.Id" class="collapse" data-filtro="@Model.Titulo" data-departamentoId="@Model.Id" aria-labelledby="heading-@Model.Id" data-parent="#accordion">
+        <div class="card-body">
+            <div style="text-align: end" class="container">
+                <div class="row">
+                    <span class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" data-toggle="tooltip" data-html="true" title="Mostrar/Ocultar Supervisor" data-placement="top">
+                        <label>Supervisor</label>
+                        <input class="toggle-field extra-fields" type="checkbox" data-column="11" data-table="@Model.Id" data-toggle="toggle" data-on=" " data-off=" " data-onstyle="secondary">
+                    </span>
+                    <span class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" data-toggle="tooltip" data-html="true" title="Mostrar/Ocultar Correo Supervisor" data-placement="top">
+                        <label>Correo Supervisor</label>
+                        <input class="toggle-field extra-fields" type="checkbox" data-column="12" data-table="@Model.Id" data-toggle="toggle" data-on=" " data-off=" " data-onstyle="secondary">
+                    </span>
+                    <span class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" data-toggle="tooltip" data-html="true" title="Mostrar/Ocultar<br/>Teléfono" data-placement="top">
+                        <label>Teléfono</label>
+                        <input class="toggle-field extra-fields" type="checkbox" data-column="13" data-table="@Model.Id" data-toggle="toggle" data-on=" " data-off=" " data-onstyle="secondary">
+                    </span>
+                    <span class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" data-toggle="tooltip" data-html="true" title="Mostrar/Ocultar<br/>Correo" data-placement="top">
+                        <label>Correo</label>
+                        <input class="toggle-field extra-fields" type="checkbox" data-column="14" data-table="@Model.Id" data-toggle="toggle" data-on=" " data-off=" " data-onstyle="secondary">
+                    </span>
+                </div>
+            </div>
+            <table id="table-@Model.Id" cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
+                <thead>
+                    <tr class="color-corpora">
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap"></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                        <th nowrap></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model Dictionary<string, IndicadorModel>
+
+<div class="card">
+    <div class="header-navbar- navbar-expand-sm navbar- navbar-horizontal navbar-fixed- navbar-light- navbar-without-dd-arrow navbar-shadow menu-border"
+         role="navigation" data-menu="menu-wrapper" style="display: block; text-align: center !important;">
+        <div class="navbar-container main-menu-content container" data-menu="menu-container">
+            <center>
+                <ul class="nav navbar-nav text-center ul_ofOn ul_ofOn1" id="main-menu-navigation" data-menu="menu-navigation">
+                    <li style="border-left: none !important;">
+                        @Html.DisplayFor(d => d["TotalEmpl"])
+                    </li>
+                    <li style="border-left: none !important;">
+                        @Html.DisplayFor(d => d["LaboranHoy"])
+                    </li>
+                    <li style="border-left: none !important;">
+                        @Html.DisplayFor(d => d["NoLaboranHoy"])
+                    </li>
+                </ul>
+            </center>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="col-md-12 col-12 text-center">
+        <div class="header-navbar- navbar-expand-sm navbar- navbar-horizontal navbar-fixed- navbar-light navbar-without-dd-arrow navbar-shadow menu-border"
+             role="navigation" data-menu="menu-wrapper" style="display: block;">
+            <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
+                <center>
+                    <ul class="nav navbar-nav text-center ul_ofOn" id="main-menu-navigation" data-menu="menu-navigation">
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            
+                            @Html.DisplayFor(d => d["OffPremise"])
+                        </li>
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            @Html.DisplayFor(d => d["CondRiesgo"])
+                        </li>
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            @Html.DisplayFor(d => d["AusenciaJust"])
+                        </li>
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            
+                            @Html.DisplayFor(d => d["OnPremise"])
+                        </li>
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            @Html.DisplayFor(d => d["NoTocaTrabajar"])
+                        </li>
+                        <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="border-left: none !important; text-align:right !important">
+                            @Html.DisplayFor(d => d["Cuarentena"])
+                        </li>
+                    </ul>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+

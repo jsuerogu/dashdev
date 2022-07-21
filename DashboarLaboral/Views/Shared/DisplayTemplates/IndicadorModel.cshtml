@@ -1,0 +1,78 @@
+﻿@model IndicadorModel
+
+@if (Model.Tipo == IndicadorTipo.Simple)
+{
+    <h1 class="font-weight-bolder mb-0  text-media">
+        @Model.Titulo
+        @if (User.IsInRole(AccessRoles.Consultas))
+        {
+            <a class="nav-link bloque_page resumen" href="#" onclick="resumen('@Model.DatosClase', '@Url.Content("~/Consultas/Index")')">
+                <span class="@Model.Clase">@Model.Valor.ToStringSeparadorComa(@Model.FormatValor) @Model.ExtendValor</span>
+            </a>
+        }
+        else
+        {
+            <span class="@Model.Clase">@Model.Valor.ToStringSeparadorComa(@Model.FormatValor) @Model.ExtendValor</span>
+        }
+        <span class="material-icons- view_conten_popover" onclick="locatePopover(@Model.Id);" data="@Model.Id">
+            <img src="~/new_template/images/icono.svg">
+            <div class="conten_popover conten_popover-@Model.Id">@Model.Tooltip</div>
+        </span>
+    </h1>
+}
+else
+{
+    <div class="col-lg-4 col-md-4 col-sm-6 col-12 min-wid">
+        <div class="card" style="padding-bottom:0px !important">
+            <div class="card-body max-hei" style="position: relative; padding: 5px">
+                <span class="color-hoy" style="font-size: 12pt;">@Model.Titulo</span>
+                <span class="material-icon- view_conten_popover right-info" onclick="locatePopover(@Model.Id);" data="@Model.Id">
+                    <img src="~/new_template/images/icono.svg">
+                    <div class="conten_popover conten_popover-@Model.Id">@Model.Tooltip</div>
+                </span>
+                @if (User.IsInRole(AccessRoles.Consultas))
+                {
+                    <div class="row" style="cursor: pointer" onclick="resumen('@Model.DatosClase', '@Url.Content("~/Consultas/Index")')">
+                        <div class="col-lg-5 col-md-7 col-sm-8 col-8" style="padding:3px">
+                            <div style="text-align:right;vertical-align:middle !important;padding-right:6px !important">
+                                <span class="color-ayer" style="font-size: 24pt;font-weight:bold">
+                                    @Model.Valor.ToStringSeparadorComa(@Model.FormatValor) @Model.ExtendValor
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-sm-4 col-4" style="padding:3px">
+                            <div style="vertical-align:top !important">
+                                <span class="font-weight-bolder mb-0  text-media color-hoy" style="font-size: 13pt;margin-left:7px">
+                                    @Model.ValorAuxiliar.ToStringSeparadorComa(@Model.FormatValorAuxiliar) @Model.ExtendValorAuxiliar
+                                </span>
+                                <p style="font-size: 10pt; margin-left: 7px">@Model.Descripcion</p>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-lg-5 col-md-7 col-sm-8 col-8" style="padding:3px">
+                            <div style="text-align:right;vertical-align:middle !important;padding-right:6px !important">
+                                <span class="color-ayer" style="font-size: 24pt;font-weight:bold">
+                                    @Model.Valor.ToStringSeparadorComa(@Model.FormatValor) @Model.ExtendValor
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-sm-4 col-4" style="padding:3px">
+                            <div style="vertical-align:top !important">
+                                <span class="font-weight-bolder mb-0  text-media color-hoy" style="font-size: 13pt;margin-left:7px">
+                                    @Model.ValorAuxiliar.ToStringSeparadorComa(@Model.FormatValorAuxiliar) @Model.ExtendValorAuxiliar
+                                </span>
+                                <p style="font-size: 10pt; margin-left: 7px">@Model.Descripcion</p>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

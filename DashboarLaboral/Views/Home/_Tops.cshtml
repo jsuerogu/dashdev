@@ -1,0 +1,16 @@
+﻿@model TopsModel
+
+<h1>TOP 10 AREAS</h1>
+<div class="row col-12">
+    @foreach (var topModel in Model.TopModelsAreas)
+    {
+        @Html.DisplayFor(d => topModel)
+    }
+</div>
+<h1>TOP 10 EMPLEADOS</h1>
+<div class="row col-12">
+    @foreach (var topModel in Model.TopModelsEmpleados)
+    {
+        @Html.DisplayFor(d => topModel)
+    }
+</div>

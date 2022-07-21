@@ -1,0 +1,46 @@
+﻿<div class="app-content content margen_top1">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="card card-body">
+                <div class="card card-table">
+                    <div>
+                        <a class="btn color-btn modal-link" href="@Url.Action("Edit")">Nueva Empresa</a>
+                    </div>
+                    <table id="empresastable" cellpadding="0" cellspacing="0"
+                           class="table table-striped table-bordered"
+                           data-url="@Url.Content("~/Empresas/CargarData")"
+                           data-urlEdit="@Url.Content("~/Empresas/Edit")"
+                           data-modalsize="">
+                        <thead>
+                            <tr class="color-corpora">
+                                <th nowrap></th>
+                                <th nowrap></th>
+                                <th nowrap></th>
+                                <th nowrap></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+<script src="~/js/EmpresaDatatable.js"></script>
+<script>
+     $(function () {
+
+        $(document).ready(function () {
+            $('#preload').hide();
+        });
+
+
+
+    });
+</script>
+}

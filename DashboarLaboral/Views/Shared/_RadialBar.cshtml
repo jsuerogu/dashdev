@@ -1,0 +1,58 @@
+﻿<style>
+    #containerR {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 45px !important;
+    }
+</style>
+<div class="col-lg-4 col-md-4 col-sm-12 col-12 marg-lef1">
+    <div class="card max">
+        <div style="text-align:right;margin-top:10px;margin-right:10px">
+            <a id="toggle_fullscreenR" data-toggle="tooltip" title="Ver Pantalla Completa" data-placement="top">
+                <i class="fa-2x fa fa-television"></i>
+            </a>
+        </div>
+        <div id="containerR" class="card-body">
+            <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+                <h4 class="card-title mb-sm-0 mb-0"></h4>
+            </div>
+            <div id="donut-chart-0" style="margin-top: -5em;"></div>
+            <br />
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $('#toggle_fullscreenR').on('click', function () {
+        // if already full screen; exit
+        // else go fullscreen
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        } else {
+            element = $('#containerR').get(0);
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+    });</script>
+

@@ -1,0 +1,153 @@
+﻿@model IndexModel
+
+<div class="app-content content margen_top1">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-md-12 right">
+                        <label></label>
+                        <div class="text-right" style="font-size:12pt !important">
+                            Ultima Actualización: @Model.FechaEjecucion.ToString("dd/MM/yyyy hh:mm:ss")
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Empresas</label>
+                        @Html.DropDownList("empresa", Model.Empresas, new { @class = "custom-select dropdown" })
+                    </div>
+                    <div class="col-md-3">
+                        <label>Vicepresidencias</label>
+                        @Html.DropDownList("orden", Model.Vicepresidencias, new { @class = "custom-select dropdown" })
+                    </div>
+                    <div class="col-md-3">
+                        <label>Tipo Colaborador</label>
+                        @Html.DropDownList("colaborador", Model.ColaboradorTipo, new { @class = "custom-select dropdown" })
+                    </div>
+                    <div class="col-md-3">
+                        <label>Horario</label>
+                        <br />
+                        <input id="hourRangeCheck" class="toggle-field" checked type="checkbox" data-toggle="toggle" data-on="Hora Actual" data-off="Hora Acumulado" data-onstyle="secondary" data-height="40"
+                            data-width="100%">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
+            </div>
+
+            <div id="indicadoressimples"></div>
+            <div class="row marg-lef" style="justify-content: center;">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-12 row" style="height:100% !important" id="indicadoresextendidos"></div>
+                @await Html.PartialAsync("_RadialBar")
+            </div>
+            <div class="row">
+                @await Html.PartialAsync("_AreaChartMobile")
+                @await Html.PartialAsync("_AreaChart")
+                @await Html.PartialAsync("_HorasExtrasChart")
+            </div>
+            <div class="center" id="partialTops"></div>
+        </div>
+    </div>
+</div>
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+@section Scripts {
+<script>
+    $(function () {
+
+        empresa = $("#empresa").val();
+        orden = $("#orden").val();
+        rangoHora = false;
+        colaborador = $("#colaborador").val();
+
+        window.onload = function LoadFunction() {
+           $('#preload').show();
+        };
+
+        $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+
+            if(empresa !== '') {
+                cargarVicePresidencias('#orden', $("#empresa").val(), '@Url.Content("~/Home/ObtenerVicePresidencia")');
+            }
+
+            loadData();
+            $('#preload').hide();
+        });
+
+        $(document).mouseup(function () {
+            $('.conten_popover').hide();
+         });
+
+        $("#empresa").change(function () {
+            cargarVicePresidencias('#orden', $("#empresa").val(), '@Url.Content("~/Home/ObtenerVicePresidencia")');
+            loadData();
+        });
+
+        $('#hourRangeCheck').change(function ()
+        {
+            loadData();
+        });
+
+        $('#colaborador').change(function ()
+        {
+            loadData();
+        });
+
+        $("#orden").change(function () {
+            loadData();
+        });
+
+
+        loadData = function() {
+            empresa = $("#empresa").val();
+            orden = $("#orden").val();
+            rangoHora = $("#hourRangeCheck").is(':checked');
+            colaborador = $("#colaborador").val();
+
+            $("#indicadoressimples").load('@Url.Content("~/Home/IndicadoresSimples")?'+urlEncode('empresa='+empresa+'&orden='+orden+'&rangoHora='+rangoHora.toString()+'&colaborador='+colaborador));
+            $("#indicadoresextendidos").load('@Url.Content("~/Home/IndicadoresExtendidos")?'+urlEncode('empresa='+empresa+'&orden='+orden+'&rangoHora='+rangoHora.toString()+'&colaborador='+colaborador));
+            $("#partialTops").load('@Url.Content("~/Home/Tops")?'+urlEncode('empresa='+empresa+'&orden='+orden+'&rangoHora='+rangoHora.toString()+'&colaborador='+colaborador));
+
+               var isMobile = {
+                Android: function () {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function () {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function () {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function () {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function () {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function () {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            cargarDataGraficoDonut('@Url.Action("GraficoBar","Graficos")');
+            if (isMobile.any()) {
+                $('#chartNormal').remove();
+                configurarGraficoAreaMobile('@Url.Action("GraficoArea","Graficos")');
+
+            } else {
+                $('#chartMobile').remove();
+                configurarGraficoArea('@Url.Action("GraficoArea","Graficos")');
+            }
+            
+            cargarHorasExtrasGrafico('@Url.Action("GraficoHorasExtras","Graficos")');
+        }
+    });
+</script>
+}

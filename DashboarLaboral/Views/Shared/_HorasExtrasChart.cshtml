@@ -1,0 +1,52 @@
+﻿<div class="col-12 col-md-12" id="chartNormal">
+    <div class="card">
+        <div style="text-align:right;margin-top:10px;margin-right:10px">
+            <a id="toggle_fullscreenHE" data-toggle="tooltip" title="Ver Pantalla Completa" data-placement="top">
+                <i class="fa-2x fa fa-television"></i>
+            </a>
+        </div>
+        <div id="containerHE">
+            <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+                <div>
+                    <h4 class="card-title">Horas Extras Planificadas vs Reales</h4>
+                </div>
+            </div>
+            <div id="horas-extras-barchar-0"></div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    $('#toggle_fullscreenHE').on('click', function () {
+        // if already full screen; exit
+        // else go fullscreen
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        } else {
+            element = $('#containerHE').get(0);
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+    });
+</script>

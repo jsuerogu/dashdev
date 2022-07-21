@@ -1,0 +1,34 @@
+﻿@model PosicionesFeriadosDto
+
+<div>
+    <div class="modal-title">
+        @if (Model.Id == 0)
+        {
+            <h3>Agregar Configuración</h3>
+        }
+        else
+        {
+            <h3>Editar Configuración</h3>
+        }
+    </div>
+    <form method="post" class="modal-link-submit" data-action="@Url.Content("~/PosicionesFeriados/Edit")">
+
+        @Html.HiddenFor(p => p.Id)
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="Posicion">Posicion:</label>
+                    @Html.TextBoxFor(model => model.Posicion, new {@class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Posicion"></span>
+                </div>                
+            </div>            
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12 col-lx-6">
+                <button type="submit" id="guardar" class="btn color-btn btn-block">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+

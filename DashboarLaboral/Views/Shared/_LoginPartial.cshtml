@@ -1,0 +1,18 @@
+﻿@{
+    string displayName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
+
+    if (string.IsNullOrWhiteSpace(displayName))
+        displayName = User.GetDisplayName();
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="nav-link bloque_page text-dark" data-toggle="tooltip" title="Cerrar Sesión" asp-controller="Account" asp-action="LogOut">
+        <i style="margin-right: 7px;" class="feather icon-monitor"></i>
+        <span data-i18n="Logout">
+            <img src="~/new_template/images/logout.png" style="width: 25px">
+            @displayName
+        </span>
+    </a>
+}
