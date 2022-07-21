@@ -27,7 +27,8 @@ namespace DashboarLaboral.Core.Infrastructura.Repositorios
 
             Filtro =
                    h =>
-                    !h.OffPremise &&
+                     h.Trabajahoy == 1
+                    && !h.OffPremise &&
                     h.Ausentismo == null &&
                     h.Poncheentrada.HasValue
                     && h.Ponchesalida.HasValue

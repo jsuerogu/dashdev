@@ -16,7 +16,7 @@ namespace DashboarLaboral.Core.Infrastructura.Services
             this.context = context;
         }
 
-        public DateTime Hoy => new DateTime(2022, 07, 14) /*DateTime.Now.FechaZonaHoraria()*/;
+        public DateTime Hoy => new DateTime(2022, 07, 12) /*DateTime.Now.FechaZonaHoraria()*/;
 
         public DateTime FechaHora => new DateTime(Hoy.Year, Hoy.Month, Hoy.Day, 22, 30, 0) /*Hoy*/;
 

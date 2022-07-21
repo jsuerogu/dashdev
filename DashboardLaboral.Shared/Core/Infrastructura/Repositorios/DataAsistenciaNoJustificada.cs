@@ -21,7 +21,7 @@ namespace DashboarLaboral.Core.Infrastructura.Repositorios
         public DataAsistenciaNoJustificada(IDataContext dataContext, DataOffPremise dataOffPremise
             , insitedb context)
         {
-            Filtro = h => h.Trabajahoy == 1 && h.Ausentismo != null
+            Filtro = h => h.Trabajahoy == 0
               && !h.OffPremise
               && (h.Poncheentrada.HasValue || h.Ponchesalida.HasValue);
 
