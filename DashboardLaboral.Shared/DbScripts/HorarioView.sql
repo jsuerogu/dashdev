@@ -1,4 +1,4 @@
-﻿/****** Object:  View [dbo].[HorarioView]    Script Date: 7/20/2022 11:15:25 PM ******/
+﻿/****** Object:  View [dbo].[HorarioView]    Script Date: 7/22/2022 12:23:43 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -6,7 +6,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER VIEW [dbo].[HorarioView]
+
+
+CREATE VIEW [dbo].[HorarioView]
 WITH SCHEMABINDING
 AS
 SELECT 
@@ -43,13 +45,13 @@ SELECT
 			ELSE 1
 		END TRABAJAHOY
       ,H.ADMINISTRATIVO
-      ,H.HORASEXTRAS
+      ,ISNULL(H.HORASEXTRAS, 0) HORASEXTRAS
       ,H.HORASDESCONTADAS
       ,H.CANTHORASPERMISO
       ,H.HORASFUERAS
       ,H.FechaNacimiento
       ,H.FechaIngreso
-      ,H.HORASEXTRASPLA
+      ,ISNULL(H.HORASEXTRASPLA,0) HORASEXTRASPLA
       ,H.MOTIVOSPLA
 	  ,CASE
 		WHEN A.AUDES IS NOT NULL AND A.AUTEL = 1 THEN CAST(A.AUTEL AS BIT)
